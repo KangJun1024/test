@@ -15,10 +15,10 @@ public class HelloTest {
         KieServices kieServices = KieServices.Factory.get();
         container = kieServices.getKieClasspathContainer();
         statefulKieSession = container.newKieSession("ksession-hello");
-        Person person = new Person("Kevin",12);
+        Person person = new Person("kangjun",12);
         statefulKieSession.insert(person);
         statefulKieSession.fireAllRules();
-        Person person2 = new Person("Jack",50);
+        Person person2 = new Person("kangda",50);
         statefulKieSession.insert(person2);
         statefulKieSession.fireAllRules();
 
