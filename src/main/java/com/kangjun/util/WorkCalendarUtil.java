@@ -19,21 +19,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  日历节假日
+ *  工作历工具类
  */
-public class holiday {
+public class WorkCalendarUtil {
 
-    private String URL = "http://timor.tech/api/holiday/year/";
+    //获取CorpAccessToken URL
+    private String URL = "https://open.fxiaoke.com/cgi/corpAccessToken/get/V2";
 
     /**
      *  调用外网接口，返回当前月的全部假期
-     *  URL: http://timor.tech/api/holiday/year/2019-010
+     *  URL: http://timor.tech/api/holiday/year/2019-10
      * @param currentMonth
      * @return JSONArray [
      *       {
-     *         "date": "20190801",
-     *         "week": "日",
+     *         "date": "2019-08-01",
+     *         "week": 1,
      *         "lunarCalendar": "八月十五",
+     *         "holiday": true,
      *         "solarTerm": "大寒"
      *      }
      *        ]
@@ -100,19 +102,6 @@ public class holiday {
         return jsonArray;
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * GET 请求

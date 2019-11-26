@@ -14,7 +14,6 @@ public class CucTest {
         	new Writer(barrier).start();
         }
 
-        System.out.println("END");
     }
     static class Writer extends Thread{
         private CyclicBarrier cyclicBarrier;

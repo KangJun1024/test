@@ -11,11 +11,8 @@ public class CucTest {
         int N = 4;
         CyclicBarrier barrier  = new CyclicBarrier(N);
         for(int i=0;i<N;i++){
-        	
         	new Writer(barrier).start();
         }
-
-        System.out.println("END");
     }
     static class Writer extends Thread{
         private CyclicBarrier cyclicBarrier;
@@ -36,12 +33,12 @@ public class CucTest {
             System.out.println("所有线程写入完毕，继续处理其他任务...");
             String key = "test123";
             //加锁
-            RedissonLock.acquire(key + UUID.randomUUID().toString());
+            RedissonLock.acquire(key);
             System.out.println("线程"+ Thread.currentThread().getName() +"获得分布式锁");
             try {
-                //Thread.sleep(2000);
-               // RedissonLock.release(key);
-               // System.out.println("线程"+Thread.currentThread().getName()+"释放分布式锁");
+                Thread.sleep(2000);
+                RedissonLock.release(key);
+                System.out.println("线程"+Thread.currentThread().getName()+"释放分布式锁");
             } catch (Exception e) {
                 e.printStackTrace();
             }

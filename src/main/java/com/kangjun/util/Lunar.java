@@ -311,17 +311,26 @@ public class Lunar {
    }   
    
    public static void main(String[] args) throws Exception{
-       SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+//       SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+//
+//       Date date = dateformat.parse("2019-4-5");
+//
+//       //Date date = new Date();
+//       Calendar today = Calendar.getInstance();
+//       today.setTime(date);
+//       Lunar lunar = new Lunar(today);
+//       System.out.println(lunar.toString());
+//       String solarTerms = Lunar.getSolarTerms(today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DAY_OF_MONTH));
+//       System.out.println("北京时间: " + chineseDateFormat.format(today.getTime()) + "　农历: " + lunar +"　节气: " + solarTerms);
 
-       Date date = dateformat.parse("2019-4-5");
-
-       //Date date = new Date();
-       Calendar today = Calendar.getInstance();
-       today.setTime(date);
-       Lunar lunar = new Lunar(today);
-       System.out.println(lunar.toString());
-       String solarTerms = Lunar.getSolarTerms(today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DAY_OF_MONTH));
-       System.out.println("北京时间: " + chineseDateFormat.format(today.getTime()) + "　农历: " + lunar +"　节气: " + solarTerms);
-
+       String dateStr = "20190717000000";
+       String substring = dateStr.substring(4, 8);  //0707 -> 07.07
+       String substring1 = substring.substring(0, 2);
+       String substring2 = substring.substring(2, substring.length());
+       String result = substring1 + "." + substring2;
+       System.out.println(substring);
+       System.out.println(substring1);
+       System.out.println(substring2);
+       System.out.println(result);
     }
 }

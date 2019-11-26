@@ -189,7 +189,9 @@ public class LunarUtil {
     public static void main(String[] args) throws ParseException {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String d = dateFormat.format(date);
+//        String d = dateFormat.format(date);
+//        System.out.println(d);
+        String d = "2051-01-01";
         Calendar today = Calendar.getInstance();
         today.setTime(chineseDateFormat.parse(d));
         LunarUtil lunar = new LunarUtil(today);

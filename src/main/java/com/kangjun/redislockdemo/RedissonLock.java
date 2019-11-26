@@ -25,7 +25,7 @@ public class RedissonLock {
     public static void release(String lockName){
         //必须是和加锁时的同一个key
         String key = LOCK_TITLE + lockName;
-        //获取所对象
+        //获取锁对象
         RLock mylock = redisson.getLock(key);
         //释放锁（解锁）
         mylock.unlock();

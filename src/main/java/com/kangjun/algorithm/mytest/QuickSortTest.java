@@ -14,40 +14,38 @@ public class QuickSortTest {
     }
 
     private static void sort(Integer[] arrs) {
+        //快速排序 第一个数值比较交换 分合思想
         int start = 0;
         int end = arrs.length - 1;
         quickSort(arrs,start,end);
     }
 
     private static void quickSort(Integer[] arrs, int start, int end) {
-        //temp: 比较的基准数 首次为第一个元素
-        //t: 满足交换条件时的临时变量
-        int i,j,temp,t;
+        //i: 左指针移动起始位置 j: 右指针移动起始位置 t: 左右交换临时变量 temp: 基准数交换临时变量
         if(start > end){
             return;
         }
-        // 两头移动交换
+        int i,j,temp,t;
         i = start;
         j = end;
         temp = arrs[start];
-        while(i < j){ //不等时，移动左右指针判断符合条件的元素交换
-            while(arrs[j] >= temp && i < j){
+        // i >= j 交换基准数
+        while (i < j){
+            while (arrs[j] <= temp && i < j){
                 j--;
             }
-            while(arrs[i] <= temp && i < j){
+            while (arrs[i] >= temp && i < j){
                 i++;
             }
             if(i < j){
-                //满足条件时交换
                 t = arrs[i];
                 arrs[i] = arrs[j];
                 arrs[j] = t;
             }
         }
-        //交换基准数 i == j
         arrs[start] = arrs[j];
         arrs[j] = temp;
-        //基准数两侧递归
+        //i == j 交换基准数的元数
         quickSort(arrs,start,j - 1);
         quickSort(arrs,j + 1,end);
 

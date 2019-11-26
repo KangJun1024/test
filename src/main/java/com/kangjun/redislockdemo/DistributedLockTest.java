@@ -17,13 +17,9 @@ public class DistributedLockTest {
         RedissonLock.acquire(key);
         RedissonLock.acquire(key);
 
-
         //释放锁
         RedissonLock.release(key);
 
-
-
     }
-
 
 }

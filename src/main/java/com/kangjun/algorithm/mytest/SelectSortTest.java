@@ -1,7 +1,7 @@
 package com.kangjun.algorithm.mytest;
 
 /**
- *  简单选择排序  GG
+ *  简单选择排序 每趟第一个
  */
 public class SelectSortTest {
     public static void main(String[] args) {
@@ -15,20 +15,21 @@ public class SelectSortTest {
     }
 
     private static void selectSort(Integer[] arrs) {
-        for (int i = 0; i < arrs.length - 1; i++) {
-            //用于交换中间变量
-            int temp;
-            //交换的索引
-            int index = i;
-            for (int j = i + 1; j < arrs.length; j++) {  //每一个元素以此和后边的每一个元素做比较交换
+        if (null == arrs || arrs.length <= 1) {
+            return;
+        }
+        for (int i = 0; i < arrs.length; i++) {    //循环趟数
+            int index = i; //比较索引 0 1 2 3 4
+            int temp ; //比较的值
+            for (int j = i + 1; j < arrs.length; j++) {
                 if(arrs[index] < arrs[j]){
-                    //符合条件的索引
                     index = j;
                 }
             }
-            temp = arrs[i];
-            arrs[i] =  arrs[index];
-            arrs[index] = temp;
+            //交换
+            temp = arrs[index];
+            arrs[index] = arrs[i];
+            arrs[i] = temp;
         }
     }
 }
