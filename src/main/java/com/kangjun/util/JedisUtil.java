@@ -49,7 +49,8 @@ public class JedisUtil {
         Jedis jedis = null;
         try {
             jedis = getJedis();
-            return jedis.setex(key, expireTime, value);
+            String setex = jedis.setex(key, expireTime, value);
+            return setex;
         } catch (Exception e) {
             log.error("set key:{} value:{} expireTime:{} error", key, value, expireTime, e);
             return null;

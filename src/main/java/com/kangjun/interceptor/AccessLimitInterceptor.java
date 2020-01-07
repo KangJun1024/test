@@ -28,7 +28,6 @@ public class AccessLimitInterceptor implements HandlerInterceptor {
         if(!(handler instanceof HandlerMethod)){
             return true;
         }
-
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         //获取处理器方法
         Method method = handlerMethod.getMethod();
@@ -40,7 +39,7 @@ public class AccessLimitInterceptor implements HandlerInterceptor {
             check(annotation,request);
         }
 
-        return false;
+        return true;
     }
 
     private void check(AccessLimit annotation, HttpServletRequest request) {
