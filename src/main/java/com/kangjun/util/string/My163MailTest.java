@@ -1,6 +1,5 @@
 package com.kangjun.util.string;
 
-import com.sun.glass.ui.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
