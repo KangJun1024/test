@@ -37,7 +37,7 @@ public class OptionalTest {
         //②使用Optional中提供的map()方法可以更简单的方式实现
         Optional<User> userOpt = Optional.ofNullable(u);
         Optional<String> roleIdOpt = userOpt.map(User::getRoleId);
-        System.out.println(roleIdOpt);
+        System.out.println(roleIdOpt.isPresent()? roleIdOpt.get() : "sb");
 
         //5.使用orElse方法设置默认值
         //①orElse()：如果有值就返回，否则返回一个给定的值作为默认值；
@@ -79,8 +79,11 @@ public class OptionalTest {
             System.out.println("1");
         }
 
-        System.out.println(userOpt.map(User::getRoleId).map(String::toLowerCase).orElse(null));
+        System.out.println(userOpt.map(User::getUserName).map(String::toLowerCase).orElse(null));
 
+        User user = userOpt.filter(detail1 -> "teacher".equals(detail1.getRoleId())).orElseThrow(() ->
+                new IllegalArgumentException("医生该时段已经重新排班，不能复诊排班"));
+        System.out.println(user);
 
     }
 

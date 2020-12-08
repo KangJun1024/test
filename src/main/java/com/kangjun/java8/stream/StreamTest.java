@@ -7,14 +7,14 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- *  Java8 pratice
+ *  Java8 practice
  */
 public class StreamTest {
 
     /**
      *  过滤集合
      */
-   // @Test
+    @Test
     public void fiterSex(){
         List<PersonModel> personModels = Data.getData();
         //old
@@ -28,6 +28,12 @@ public class StreamTest {
         List<PersonModel> collect = personModels.stream().filter(personModel ->
                 "男".equals(personModel.getSex())).collect(Collectors.toList());
 
+        //Optional
+        Optional<PersonModel> first = personModels.stream().filter(personModel ->
+                "男".equals(personModel.getSex())).findFirst();
+        if (first.isPresent()) {
+            System.out.println(first.get().getName());
+        }
     }
 
     /**
@@ -92,6 +98,19 @@ public class StreamTest {
         List<String> collect2 = personModels.stream().map(personModel ->
                 personModel.getName().split(" ")).flatMap(str -> Arrays.asList(str).stream()).collect(Collectors.toList());
     }
+
+    /**
+     *  allMatch、anyMatch、noneMatch
+     *
+     */
+    @Test
+    public void allMatch(){
+        List<PersonModel> personModels = Data.getData();
+        boolean b = personModels.stream().anyMatch(personModel -> "wu qi".equals(personModel.getName()));
+        System.out.println(b);
+
+    }
+
 
     /**
      *  Reduce  MapReduce  递归累计

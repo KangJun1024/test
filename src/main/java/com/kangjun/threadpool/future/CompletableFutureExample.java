@@ -61,13 +61,22 @@ public class CompletableFutureExample {
 //        log.info(comboText.get());
 
         //
-        final CompletableFuture<Void> voidCompletableFuture = CompletableFuture.supplyAsync(
-                // 模拟远端API调用，这里只返回了一个构造的对象
-                () -> Product.of(12345L,"颈椎/腰椎治疗仪"))
-                .thenAccept(product -> {
-                    log.info("获取到远程API产品名称 " + product.getName());
-                });
-        voidCompletableFuture.get();
+//        final CompletableFuture<Void> voidCompletableFuture = CompletableFuture.supplyAsync(
+//                // 模拟远端API调用，这里只返回了一个构造的对象
+//                () -> Product.of(12345L,"颈椎/腰椎治疗仪"))
+//                .thenAccept(product -> {
+//                    log.info("获取到远程API产品名称 " + product.getName());
+//                });
+//        voidCompletableFuture.get();
+
+        CompletableFuture<String> stringCompletableFuture = CompletableFuture.supplyAsync(() -> {
+            log.info("前序操作");
+            return "前需操作结果";
+        }).thenApplyAsync(result -> {
+            log.info("后续操作");
+            return "后续操作结果";
+        });
+        stringCompletableFuture.get();
 
     }
 }

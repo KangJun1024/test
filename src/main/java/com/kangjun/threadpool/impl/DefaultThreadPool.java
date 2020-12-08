@@ -18,9 +18,9 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
     // 线程池默认的数量   corePoolSize(核心线程数)
     private static final int DEFAULT_WORKER_NUMBERS = 5;
     
-    // 维护一个工作列表,将会向里边插入工作(阻塞队列 - 有界无界)
+    // 维护一个工作列表,将会向里边插入工作(阻塞队列 - 有界无界 先进先出)    核心线程数 --> 阻塞队列  --> 最大线程数
     private final LinkedList<Job> jobs = new LinkedList<Job>();
-    // 工作者列表   
+    // 工作者列表   线程执行任务
     private final List<Worker> workers = Collections.synchronizedList(new ArrayList<Worker>());
     // 工作者线程的数量
     private int workerNum = DEFAULT_WORKER_NUMBERS;
