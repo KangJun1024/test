@@ -1,4 +1,4 @@
-package com.kangjun.redislockdemo;
+package com.kangjun.util.redislockdemo;
 
 public class DistributedLockTest {
     public static void main(String[] args) {

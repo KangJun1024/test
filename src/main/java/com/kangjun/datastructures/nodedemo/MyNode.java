@@ -1,4 +1,4 @@
-package com.kangjun.nodedemo;
+package com.kangjun.datastructures.nodedemo;
 
 /**
  *  链表反转实战 单向链表类

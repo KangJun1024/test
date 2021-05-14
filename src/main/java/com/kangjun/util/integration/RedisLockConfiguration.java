@@ -1,4 +1,4 @@
-package com.kangjun.integration;
+package com.kangjun.util.integration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

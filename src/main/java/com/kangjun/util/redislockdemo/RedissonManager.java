@@ -1,4 +1,4 @@
-package com.kangjun.redislockdemo;
+package com.kangjun.util.redislockdemo;
 
 import org.redisson.Redisson;
 import org.redisson.config.Config;

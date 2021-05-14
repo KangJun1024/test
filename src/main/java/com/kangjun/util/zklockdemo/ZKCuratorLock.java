@@ -1,4 +1,4 @@
-package com.kangjun.zklockdemo;
+package com.kangjun.util.zklockdemo;
 
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 

@@ -1,4 +1,4 @@
-package com.kangjun.zklockdemo;
+package com.kangjun.util.zklockdemo;
 
 import java.util.concurrent.CyclicBarrier;
 

@@ -1,5 +1,8 @@
 package com.kangjun.designpattern.builder.example;
 
+/**
+ *  创建者模式
+ */
 public class Person {
     /*名字（必须）*/
     private final String name;

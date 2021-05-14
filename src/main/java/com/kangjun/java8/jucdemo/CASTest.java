@@ -1,9 +1,5 @@
-package com.kangjun.jucdemo;
+package com.kangjun.java8.jucdemo;
 
-import com.kangjun.redislockdemo.CucTest;
-import com.kangjun.redislockdemo.RedissonLock;
-
-import java.util.UUID;
 import java.util.concurrent.CyclicBarrier;
 
 public class CASTest {

@@ -163,15 +163,17 @@ public class StreamTest {
     /**
      *  collect toMap
      */
-    //@Test
+    @Test
     public void toMapTest(){
         List<PersonModel> personModels = Data.getData();
         Map<String, Integer> collect = personModels.stream().collect
                 (Collectors.toMap(PersonModel::getName, PersonModel::getAge));
 
-        personModels.stream().collect(Collectors.toMap(personModel -> personModel.getName(),value -> {
-            return value + "1";
+        Map<String, Integer> collect2 = personModels.stream().collect(Collectors.toMap(personModel -> personModel.getName(),value -> {
+            return value.getAge();
         }));
+        System.out.println(collect);
+        System.out.println(collect2);
 
     }
 
@@ -188,11 +190,15 @@ public class StreamTest {
     /**
      * 分组
      */
-    //@Test
+    @Test
     public void toGroupTest(){
         List<PersonModel> personModels = Data.getData();
         Map<Boolean, List<PersonModel>> collect = personModels.stream().
                 collect(Collectors.groupingBy(personModel -> "男".equals(personModel.getSex())));
+
+        Map<String, List<PersonModel>> collect1 =
+                personModels.stream().collect(Collectors.groupingBy(PersonModel::getSex));
+
         System.out.println(collect);
     }
 

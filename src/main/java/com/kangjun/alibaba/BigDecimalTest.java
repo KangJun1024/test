@@ -8,5 +8,6 @@ public class BigDecimalTest {
         System.out.println(a);
         BigDecimal b = new BigDecimal("0.1");
         System.out.println(b);
+        System.out.println(a == b);
     }
 }

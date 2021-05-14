@@ -19,7 +19,7 @@ public class OptionalTest {
 
         //2.判断Null 如果创建的对象没有值，调用isPresent()方法会返回false，
         // 调用get()方法抛出NoSuchElementException异常。 No value present
-        boolean present = notNullOpt.isPresent();
+        boolean present = nullableOpt.isPresent();
         System.out.println(present);
 
         //3.获取对象
@@ -56,8 +56,8 @@ public class OptionalTest {
         //6.使用filter()方法过滤
         //filter()方法可用于判断Optional对象是否满足给定条件，一般用于条件过滤
         Optional<String> optional = Optional.of("kangjda@163.com");
-        Optional<String> s3 = optional.filter(str2 -> str2.contains("163e"));
-        System.out.println(s3);
+        Optional<String> s3 = optional.filter(str2 -> str2.contains("163"));
+        System.out.println(s3.get());
 
         //7.使用建议
         //尽量避免在程序中直接调用Optional对象的get()和isPresent()方法；
@@ -79,7 +79,7 @@ public class OptionalTest {
             System.out.println("1");
         }
 
-        System.out.println(userOpt.map(User::getUserName).map(String::toLowerCase).orElse(null));
+        System.out.println(userOpt.map(User::getUserName).map(String::toLowerCase).orElse("1"));
 
         User user = userOpt.filter(detail1 -> "teacher".equals(detail1.getRoleId())).orElseThrow(() ->
                 new IllegalArgumentException("医生该时段已经重新排班，不能复诊排班"));

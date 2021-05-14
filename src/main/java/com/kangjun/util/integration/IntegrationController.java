@@ -1,4 +1,4 @@
-package com.kangjun.integration;
+package com.kangjun.util.integration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.redis.util.RedisLockRegistry;
