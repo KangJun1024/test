@@ -1,7 +1,10 @@
 package com.kangjun.java8.stream;
 
+import com.kangjun.util.ChineseCharacterUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import java.text.Collator;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -214,6 +217,53 @@ public class StreamTest {
     }
 
     // ============================================================================================
+
+
+    /**
+     *  自定义函数排序
+     */
+    @Test
+    public void testSort(){
+        List<PersonModel> personModels = Data.getData();
+
+        sortByNamePinyin(personModels);
+
+        personModels = personModels.stream().sorted(new Comparator<PersonModel>() {
+            @Override
+            public int compare(PersonModel o1, PersonModel o2) {
+                int i1 = getSortInt(o1);
+                int i2 = getSortInt(o2);
+
+                if(i1 < i2)
+                    return -1;
+
+                if(i1 > i2)
+                    return 1;
+
+                return 0;
+            }
+
+            private int getSortInt(PersonModel personModel){
+                if(StringUtils.equals("18",personModel.getAge() + "") &&
+                        StringUtils.equals("男",personModel.getSex())){
+                    return 0;
+                }else if(StringUtils.equals("男",personModel.getSex() + "")){
+                    return 1;
+                }else {
+                    return 2;
+                }
+            }
+
+
+        }).collect(Collectors.toList());
+
+        personModels.stream().forEach(personModel -> {
+
+            System.out.println(personModel.toString());
+        });
+    }
+
+
     private static int size=10000000;
 
     public static void main(String[] args) {
@@ -312,5 +362,14 @@ public class StreamTest {
         list.parallelStream().collect(Collectors.toSet());
         System.out.println(System.currentTimeMillis()-start2);
     }
+
+    private void sortByNamePinyin(List<PersonModel> personModels) {
+        personModels.sort((o1, o2) -> {
+            Comparator cmp = Collator.getInstance(java.util.Locale.CHINA);
+            return cmp.compare(ChineseCharacterUtil.getUpperCase(o1.getName(), true),
+                    ChineseCharacterUtil.getUpperCase(o2.getName(), true));
+        });
+    }
+
 
 }

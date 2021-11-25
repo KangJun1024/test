@@ -3,14 +3,23 @@ package com.kangjun.java8.stream;
 public class PersonModel {
 
     private String name;
-    private int age;
+    private Integer age;
     private String sex;
 
     public PersonModel() {
 
     }
 
-    public PersonModel(String name, int age, String sex) {
+    @Override
+    public String toString() {
+        return "PersonModel{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                '}';
+    }
+
+    public PersonModel(String name, Integer age, String sex) {
         this.name = name;
         this.age = age;
         this.sex = sex;
@@ -24,11 +33,11 @@ public class PersonModel {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+        public void setAge(Integer age) {
         this.age = age;
     }
 

@@ -26,7 +26,7 @@ public class CaculatorDemo extends JFrame {
 
 
     public CaculatorDemo() {
-        this.setTitle("老罗爱永存");
+        this.setTitle("1111");
         this.setSize(318, 457);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
