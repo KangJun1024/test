@@ -1,5 +1,6 @@
 package com.kangjun.java8.stream;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,5 +18,17 @@ public class Data {
 
     public static List<PersonModel> getData() {
         return list;
+    }
+
+
+    public static void main(String[] args) {
+
+        BigDecimal amount = new BigDecimal("0.0");
+        BigDecimal amount2 = new BigDecimal("0");
+
+        System.out.println(amount.equals(amount2));
+
+        System.out.println(amount2.equals(BigDecimal.ZERO));
+
     }
 } 

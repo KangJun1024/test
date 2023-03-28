@@ -1,11 +1,13 @@
 package com.kangjun.java8.stream;
 
 import com.kangjun.util.ChineseCharacterUtil;
+import io.netty.util.internal.ThreadLocalRandom;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.text.Collator;
 import java.util.*;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -109,8 +111,15 @@ public class StreamTest {
     @Test
     public void allMatch(){
         List<PersonModel> personModels = Data.getData();
+        List<PersonModel> personModels2 = Data.getData();
         boolean b = personModels.stream().anyMatch(personModel -> "wu qi".equals(personModel.getName()));
         System.out.println(b);
+
+        //集合并集
+        personModels.addAll(personModels2);
+        List<PersonModel> collect = personModels.stream().distinct().collect(Collectors.toList());
+        //集合交集
+        List<PersonModel> collect1 = personModels.stream().filter(personModels2::contains).collect(Collectors.toList());
 
     }
 
@@ -183,10 +192,14 @@ public class StreamTest {
     /**
      * 指定类型 TreeSet
      */
-    //@Test
+    @Test
     public void toTreeSetTest(){
+        List<String> names = new ArrayList<>();
         List<PersonModel> personModels = Data.getData();
-        TreeSet<PersonModel> collect = personModels.stream().collect(Collectors.toCollection(TreeSet::new));
+//        TreeSet<PersonModel> collect = personModels.stream().collect(Collectors.toCollection(TreeSet::new));
+        personModels.forEach(personModel -> {
+            names.add(personModel.getName());
+        });
 
     }
 
@@ -195,14 +208,67 @@ public class StreamTest {
      */
     @Test
     public void toGroupTest(){
+//        List<PersonModel> personModels = Data.getData();
+//        Map<Boolean, List<PersonModel>> collect = personModels.stream().
+//                collect(Collectors.groupingBy(personModel -> "男".equals(personModel.getSex())));
+//
+//        Map<String, List<PersonModel>> collect1 =
+//                personModels.stream().collect(Collectors.groupingBy(PersonModel::getSex));
+//
+////        System.out.println(collect);
+//        String split = "124~234";
+//
+//        System.out.println(split.split("~").length);
+
+//        Map<String, Long> values = new HashMap<>();
+//        System.out.println(values.get("1"));
+//        if(values.get("1") == null){
+//            System.out.println("我很牛逼");
+//        }
+//
+//        Long l ;
+//        System.out.println(l);
+//        String str = "a,b,c,,";
+//        String[] ary = str.split(",");
+//        System.out.println(ary.length);
+//
+//        double random = Math.random();
+//        int i = new Random().nextInt();
+//        long l = new Random().nextLong();
+//        long initialSeedUniquifier = ThreadLocalRandom.getInitialSeedUniquifier();
+
         List<PersonModel> personModels = Data.getData();
-        Map<Boolean, List<PersonModel>> collect = personModels.stream().
-                collect(Collectors.groupingBy(personModel -> "男".equals(personModel.getSex())));
+        // 查询用户
+//        PersonModel[] idArray = new PersonModel[personModels.size()];
+//        PersonModel[] personModels2 = personModels.toArray(idArray);
+//
+//        System.out.println(idArray.length);
+//        System.out.println(personModels2.length);
+//
+//
+//        PersonModel[] idArray2 = new PersonModel[0];
+//        PersonModel[] personModels1 = personModels.toArray(idArray2);
+//
+//        System.out.println(personModels1.length);
+//        List<PersonModel> personModels1 = personModels.subList(1, 2);
+//        personModels.add(new PersonModel());
+//        Map<String, String> values = new HashMap<>();
+//        Set<String> strings = values.keySet();
+//        strings.remove("1");
 
-        Map<String, List<PersonModel>> collect1 =
-                personModels.stream().collect(Collectors.groupingBy(PersonModel::getSex));
+//        List<Object> objects = Collections.singletonList("1");
+//        Object remove = objects.remove(0);
 
-        System.out.println(collect);
+        List<String> values = new ArrayList<>();
+        values.add("1");
+        values.add("1");
+        values.add("1");
+        values.add("1");
+        values.add("1");
+        List<String> list = values.subList(1, 2);
+//        values.add("1");
+        list.add("1");
+
     }
 
     /**
@@ -299,10 +365,22 @@ public class StreamTest {
 //        System.out.println(Optional.ofNullable(null).orElseThrow(()->{
 //            throw new RuntimeException("ss");
 //        }));
-        System.out.println("-----------List-----------");
-        testList();
+//        System.out.println("-----------List-----------");
+//        testList();
 //        System.out.println("-----------Set-----------");
 //        testSet();
+
+        String split = "124~234";
+
+//        for (String s : split.split("@")) {
+//            System.out.println(s);
+//        }
+
+//        String[] split1 = split.split("~");
+//        List<String> strings = Arrays.asList(split1);
+        String abc = "YCHZ,LHMZ,YCJX";
+        boolean lhmz = abc.contains("LHMZ");
+        System.out.println(lhmz);
 
 
     }
