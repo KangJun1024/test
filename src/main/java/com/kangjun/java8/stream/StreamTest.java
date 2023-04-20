@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.text.Collator;
 import java.util.*;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -184,6 +185,17 @@ public class StreamTest {
         Map<String, Integer> collect2 = personModels.stream().collect(Collectors.toMap(personModel -> personModel.getName(),value -> {
             return value.getAge();
         }));
+
+        Map<String, PersonModel> collect1 = personModels.stream().collect(Collectors.toMap(PersonModel::getName,
+                Function.identity(), (k1, k2) -> k1));
+
+        Map<String, PersonModel> collect3 = personModels.stream().collect(Collectors.toMap(PersonModel::getName,
+                item -> item, (k1, k2) -> k1));
+
+        LinkedHashMap<String, PersonModel> collect4 =
+                personModels.stream().collect(Collectors.toMap(PersonModel::getName, item -> item, (k1, k2) -> k1,
+                        LinkedHashMap::new));
+
         System.out.println(collect);
         System.out.println(collect2);
 
