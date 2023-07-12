@@ -249,7 +249,7 @@ public class StreamTest {
 //        long l = new Random().nextLong();
 //        long initialSeedUniquifier = ThreadLocalRandom.getInitialSeedUniquifier();
 
-        List<PersonModel> personModels = Data.getData();
+//        List<PersonModel> personModels = Data.getData();
         // 查询用户
 //        PersonModel[] idArray = new PersonModel[personModels.size()];
 //        PersonModel[] personModels2 = personModels.toArray(idArray);
@@ -271,15 +271,17 @@ public class StreamTest {
 //        List<Object> objects = Collections.singletonList("1");
 //        Object remove = objects.remove(0);
 
-        List<String> values = new ArrayList<>();
-        values.add("1");
-        values.add("1");
-        values.add("1");
-        values.add("1");
-        values.add("1");
-        List<String> list = values.subList(1, 2);
+//        List<String> values = new ArrayList<>();
 //        values.add("1");
-        list.add("1");
+//        values.add("1");
+//        values.add("1");
+//        values.add("1");
+//        values.add("1");
+//        List<String> list = values.subList(1, 2);
+////        values.add("1");
+//        list.add("1");
+        String var = "create_time";
+        System.out.println(var.toUpperCase());
 
     }
 
