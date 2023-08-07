@@ -7,3 +7,8 @@ spring:
     active: dev
 server:
   port: 8081
+
+# openSlide相关配置
+open-slide:
+  img-size: 256 # 切割的图片像素
+  img-type: jpg # 切割的图片类型

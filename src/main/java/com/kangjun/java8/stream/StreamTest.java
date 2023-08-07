@@ -5,6 +5,7 @@ import io.netty.util.internal.ThreadLocalRandom;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import java.security.SecureRandom;
 import java.text.Collator;
 import java.util.*;
 import java.util.concurrent.ScheduledExecutorService;
@@ -16,6 +17,27 @@ import java.util.stream.Stream;
  *  Java8 practice
  */
 public class StreamTest {
+
+
+    /**
+     * 遍历集合
+     *
+     */
+    @Test
+    public void foreachSex(){
+        List<PersonModel> personModels = Data.getData();
+        personModels.stream().forEach(personModel -> {
+            System.out.println(personModel.getName() + "1");
+        });
+
+        System.out.println("------------------------");
+
+        List<PersonModel> collect = personModels.stream().peek(personModel -> {
+            System.out.println(personModel.getName());
+        }).collect(Collectors.toList());
+    }
+
+
 
     /**
      *  过滤集合
@@ -308,34 +330,40 @@ public class StreamTest {
 
         sortByNamePinyin(personModels);
 
-        personModels = personModels.stream().sorted(new Comparator<PersonModel>() {
-            @Override
-            public int compare(PersonModel o1, PersonModel o2) {
-                int i1 = getSortInt(o1);
-                int i2 = getSortInt(o2);
+//        personModels = personModels.stream().sorted(new Comparator<PersonModel>() {
+//            @Override
+//            public int compare(PersonModel o1, PersonModel o2) {
+//                int i1 = getSortInt(o1);
+//                int i2 = getSortInt(o2);
+//
+//                if(i1 < i2)
+//                    return -1;
+//
+//                if(i1 > i2)
+//                    return 1;
+//
+//                return 0;
+//            }
+//
+//            private int getSortInt(PersonModel personModel){
+//                if(StringUtils.equals("18",personModel.getAge() + "") &&
+//                        StringUtils.equals("男",personModel.getSex())){
+//                    return 0;
+//                }else if(StringUtils.equals("男",personModel.getSex() + "")){
+//                    return 1;
+//                }else {
+//                    return 2;
+//                }
+//            }
+//
+//
+//        }).collect(Collectors.toList());
 
-                if(i1 < i2)
-                    return -1;
-
-                if(i1 > i2)
-                    return 1;
-
-                return 0;
-            }
-
-            private int getSortInt(PersonModel personModel){
-                if(StringUtils.equals("18",personModel.getAge() + "") &&
-                        StringUtils.equals("男",personModel.getSex())){
-                    return 0;
-                }else if(StringUtils.equals("男",personModel.getSex() + "")){
-                    return 1;
-                }else {
-                    return 2;
-                }
-            }
-
-
-        }).collect(Collectors.toList());
+        personModels = personModels
+                .stream()
+                .sorted(Comparator.comparing(PersonModel::getAge)
+                        .thenComparing(PersonModel::getSex,Comparator.reverseOrder()))
+                .collect(Collectors.toList());
 
         personModels.stream().forEach(personModel -> {
 
@@ -392,9 +420,12 @@ public class StreamTest {
 
 //        String[] split1 = split.split("~");
 //        List<String> strings = Arrays.asList(split1);
-        String abc = "YCHZ,LHMZ,YCJX";
-        boolean lhmz = abc.contains("LHMZ");
-        System.out.println(lhmz);
+//        String abc = "YCHZ,LHMZ,YCJX";
+//        boolean lhmz = abc.contains("LHMZ");
+//        System.out.println(lhmz);
+        SecureRandom random = new SecureRandom();
+        Integer num = random.nextInt(3);
+        System.out.println(num);
 
 
     }
