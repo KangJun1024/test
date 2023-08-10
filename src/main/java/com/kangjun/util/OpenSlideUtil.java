@@ -111,8 +111,8 @@ public class OpenSlideUtil {
                         BufferedImage th = os.createThumbnailImage((int) (j * os.getLevelWidth(n)), (int) (i * os.getLevelHeight(n)), os.getLevelWidth(n), os.getLevelHeight(n), imgSize);  //开始切图
                         // 输出文件到对应目录
                         //创建目录
-                        String resultName = outfile + File.separator + n + File.separator + j + Constants.UNDERSCORE + i + Constants.DOT + imgType;
-                        File file = new File(outfile + File.separator + n);
+                        String resultName = outfile + File.separator + (n + 9) + File.separator + j + Constants.UNDERSCORE + i + Constants.DOT + imgType;
+                        File file = new File(outfile + File.separator + (n + 9));
                         if (!file.exists()) {
                             System.out.println("文件不存在");
                             file.mkdirs();//创建失败会抛出异常throw new IOException("Invalid file path");

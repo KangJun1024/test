@@ -7,6 +7,12 @@ import org.junit.Test;
 
 import java.security.SecureRandom;
 import java.text.Collator;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.*;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.function.Function;
@@ -304,6 +310,28 @@ public class StreamTest {
 //        list.add("1");
         String var = "create_time";
         System.out.println(var.toUpperCase());
+
+    }
+
+    @Test
+    public void getLocalDays(){
+
+        // 创建代表一年中第一天的LocalDate对象。
+        int year = LocalDate.now().getYear();
+        LocalDate now = LocalDate.of(year, Month.JANUARY, 1);
+        // 查找一年中的第一个星期日
+        LocalDate saturday = now.with(DayOfWeek.SATURDAY);
+        LocalDate sunday = now.with(DayOfWeek.SUNDAY);
+        do {
+            System.out.println(sunday.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)));
+            sunday = sunday.plus(Period.ofDays(7));
+        } while (sunday.getYear() <= year + 1);
+        do {
+            System.out.println(saturday.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)));
+            saturday = saturday.plus(Period.ofDays(7));
+        } while (saturday.getYear() <= year + 1);
+
+        // 元旦
 
     }
 
